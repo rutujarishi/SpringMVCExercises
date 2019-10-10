@@ -1,5 +1,6 @@
-package com.stackroute;
+package com.stackroute.controller;
 
+import com.stackroute.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +15,13 @@ public class UserController {
        // System.out.println("Inside method");
 
         String str = req.getParameter("name");
+        String str1 = req.getParameter("password");
+        User user = new User();
+        user.setName(str);
+        user.setPassword(str1);
         ModelAndView modelAndView=new ModelAndView("display");
-        modelAndView.addObject("value",str);
+        modelAndView.addObject("value",user.getName());
+        modelAndView.addObject("value1",user.getPassword());
         return  modelAndView;
     }
 }
